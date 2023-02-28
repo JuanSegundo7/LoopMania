@@ -1,0 +1,37 @@
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getGifs } from "../../redux/gifs_actions";
+import Spinner from "../Spinner/Spinner";
+import GifMap from "./GifMap";
+import appStyles from "../../App.module.css";
+
+function Gifs({ keyword }: any) {
+  const dispatch = useDispatch();
+  const { data } = useSelector((state: any) => state.Gifs);
+
+  useEffect(() => {
+    if (!keyword) {
+      dispatch(getGifs(""));
+    }
+    dispatch(getGifs(keyword));
+  }, [dispatch, keyword]);
+
+  return (
+    <>
+      {!data ? (
+        <Spinner />
+      ) : (
+        <>
+          <div id={appStyles.mobileVisible}>
+            <GifMap data={data} cols={2} />
+          </div>
+          <div id={appStyles.desktopVisible}>
+            <GifMap data={data} cols={4} />
+          </div>
+        </>
+      )}
+    </>
+  );
+}
+
+export default Gifs;
