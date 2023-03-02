@@ -22,7 +22,7 @@ function Header() {
             Today
           </button>
         </Link>
-        <Link to="/trendings" id={appStyles.desktopVisible}>
+        <Link to="/create" id={appStyles.desktopVisible}>
           <button className={styles.navButton} id={appStyles.yellow}>
             Create
           </button>

@@ -1,13 +1,7 @@
-import Gifs from "../Gifs/Gifs";
-import Trending from "../Trendings/TrendingComponent";
+import GifsModule from "../Gifs/GifsModule";
 
 function Home() {
-  return (
-    <>
-      <Trending />
-      <Gifs keyword="" />;
-    </>
-  );
+  return <GifsModule value="" />;
 }
 
 export default Home;

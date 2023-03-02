@@ -42,7 +42,6 @@ function TrendingComponent() {
             })}
         </ul>
       </div>
-      ;
     </>
   );
 }

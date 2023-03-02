@@ -1,9 +1,10 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getGifs } from "../../redux/gifs_actions";
+import { clean, getGifs } from "../../redux/gifs_actions";
 import Spinner from "../Spinner/Spinner";
 import GifMap from "./GifMap";
 import appStyles from "../../App.module.css";
+import { Keyword } from "../../Models/gif.models";
 
 function Gifs({ keyword }: any) {
   const dispatch = useDispatch();
@@ -13,7 +14,11 @@ function Gifs({ keyword }: any) {
     if (!keyword) {
       dispatch(getGifs(""));
     }
+
     dispatch(getGifs(keyword));
+    return () => {
+      dispatch(clean(""));
+    };
   }, [dispatch, keyword]);
 
   return (

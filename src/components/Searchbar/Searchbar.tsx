@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { getGifs } from "../../redux/gifs_actions";
 import styles from "./Searchbar.module.css";
-import appStyles from "../../App.module.css";
+import { useNavigate, useLocation } from "react-router-dom";
 
 function Searchbar() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { pathname } = useLocation();
   const [name, setName] = useState("");
 
   const handleChange = (e: any) => {
@@ -13,6 +15,9 @@ function Searchbar() {
   };
 
   const handleSubmit = (e: any) => {
+    if (pathname.includes("/gif")) {
+      navigate(`/gifs/${name}`);
+    }
     e.preventDefault();
     dispatch(getGifs(name));
   };

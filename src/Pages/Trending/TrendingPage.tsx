@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import Gifs from "../../components/Gifs/Gifs";
-import TrendingComponent from "../../components/Trendings/TrendingComponent";
+import GifsModule from "../../components/Gifs/GifsModule";
 
 function Trending() {
   const { trending } = useParams();
@@ -11,12 +10,7 @@ function Trending() {
     setUrlPath(trending);
   }, [trending]);
 
-  return (
-    <>
-      <TrendingComponent />
-      <Gifs key={urlPath} keyword={urlPath} />;
-    </>
-  );
+  return <GifsModule value={urlPath} />;
 }
 
 export default Trending;

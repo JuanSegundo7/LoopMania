@@ -95,7 +95,7 @@ function Detail() {
             </>
           )}
           <div>
-            <h2>{gifDetail.data.title}</h2>
+            <h2>{gifDetail.data.title.toUpperCase()}</h2>
             <img
               className={styles.detailImage}
               src={gifDetail.data.images.downsized_medium.url}
@@ -107,6 +107,7 @@ function Detail() {
                 alt="bookmark"
               />
               <img
+                className={styles.share}
                 src="https://icongr.am/octicons/paper-airplane.svg?size=128&color=242424"
                 alt="share"
               />
