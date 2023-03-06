@@ -5,20 +5,30 @@ import Header from "./components/Header/Header";
 import { BrowserRouter } from "react-router-dom";
 import Switch from "./components/Switch/Switch";
 import { Container } from "@mui/material";
+import { Auth0Provider } from "@auth0/auth0-react";
 
 function App() {
   return (
-    <BrowserRouter>
-      <main className={styles.main}>
-        <Header />
-        <Container maxWidth="lg">
-          <section className={styles.container}>
-            <Switch />
-            <Footer />
-          </section>
-        </Container>
-      </main>
-    </BrowserRouter>
+    <Auth0Provider
+      domain={process.env.REACT_APP_DOMAIN as string}
+      clientId={process.env.REACT_APP_CLIENTID as string}
+      cacheLocation="localstorage"
+      authorizationParams={{
+        redirect_uri: window.location.origin,
+      }}
+    >
+      <BrowserRouter>
+        <main className={styles.main}>
+          <Header />
+          <Container maxWidth="lg">
+            <section className={styles.container}>
+              <Switch />
+              <Footer />
+            </section>
+          </Container>
+        </main>
+      </BrowserRouter>
+    </Auth0Provider>
   );
 }
 

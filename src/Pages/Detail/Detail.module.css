@@ -3,6 +3,10 @@
     min-height: 100vh;
 }
 
+.gifContainer{
+    width: 100%;
+}
+
 .detailImage{
     border-radius: 16px;
     width: 80vw;
@@ -57,14 +61,15 @@
 }
 
 .socialSide{
-    width: 300px;
-    margin: 10px 0 0 20px;
+    width: 100%;
+    margin: 10px 0;
     height: auto;
     display: flex;
+    justify-content: space-evenly;
     flex-direction: row;
 }
 
-.socialSide img{
+.socialSide svg{
     cursor: pointer;
     width: 34px;
     height: 34px;
@@ -103,11 +108,15 @@
     }
 
     .detailUserImageContainer{
-        margin: 70px 50px 0 0;
+        margin: 70px 0px 0 0;
         width: 8em;
     }
 
     .detailImage{
         width: 50vw;
+    }
+
+    .gifContainer{
+        width: 65vw;
     }
 }

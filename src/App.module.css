@@ -1,21 +1,28 @@
+#yellow a, #red a, #blue a, #lightBlue a{
+  color: black;
+}
+
+#yellow:hover ,#red:hover ,#blue:hover,#lightBlue:hover {
+  color: #fff;
+  transition: 0.3s;
+}
 
 #red:hover{
   background-color: var(--red);
-  color: #fff;
 }
+
 
 #yellow:hover{
   background-color: var(--yellow);
-  color: #fff;
 }
 
+
 #lightBlue:hover{
-  transition: 0.5s;
+  transition: 0.3s;
   background-color: var(--light-blue)
 }
 
 #blue:hover{
-  transition: 0.5s;
   background-color: var(--blue);
 }
 

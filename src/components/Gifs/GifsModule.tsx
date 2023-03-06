@@ -5,8 +5,6 @@ import Gifs from "./Gifs";
 
 function GifsModule({ value }: any) {
   const { keyword } = useParams();
-  console.log(value, "value");
-  console.log(keyword, "keyword");
   if (value) {
     return (
       <>

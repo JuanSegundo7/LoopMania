@@ -1,13 +1,16 @@
 import {
   GET_GIFS,
   GET_ONE_GIF,
-  CLEAN_DETAIL,
   GET_TRENDINGS,
+  GET_RANDOM_GIF,
+  CLEAN_DETAIL,
+  CLEAN_RANDOM,
 } from "./gifs_actions";
 
 const initialState = {
   Gifs: [],
   Gif: {},
+  Random: {},
   Trendings: [],
 };
 
@@ -25,6 +28,12 @@ const gifReducer = (state = initialState, action: any) => {
         Gif: action.payload,
       };
     }
+    case GET_RANDOM_GIF: {
+      return {
+        ...state,
+        Random: action.payload,
+      };
+    }
     case GET_TRENDINGS: {
       return {
         ...state,
@@ -35,6 +44,12 @@ const gifReducer = (state = initialState, action: any) => {
       return {
         ...state,
         Gif: {},
+      };
+    }
+    case CLEAN_RANDOM: {
+      return {
+        ...state,
+        Random: {},
       };
     }
 

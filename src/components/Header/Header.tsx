@@ -1,12 +1,14 @@
 import { Link } from "react-router-dom";
 import Searchbar from "../Searchbar/Searchbar";
 import styles from "./Header.module.css";
-import MenuIcon from "@mui/icons-material/Menu";
 import appStyles from "../../App.module.css";
+import { useAuth0 } from "@auth0/auth0-react";
 import { useState } from "react";
+import Burger from "./Burger";
 
 function Header() {
   const [value, setValue] = useState(false);
+  const { user, isAuthenticated, loginWithRedirect, isLoading } = useAuth0();
 
   const handleClick = () => {
     setValue(!value);
@@ -17,44 +19,64 @@ function Header() {
         <Link to="/">
           <img className={styles.logo} src="/favicon.ico" alt="logo" />
         </Link>
-        <Link to="/today" id={appStyles.desktopVisible}>
-          <button className={styles.navButton} id={appStyles.red}>
-            Today
-          </button>
-        </Link>
-        <Link to="/create" id={appStyles.desktopVisible}>
-          <button className={styles.navButton} id={appStyles.yellow}>
-            Create
-          </button>
-        </Link>
+        <div id={appStyles.desktopVisible}>
+          <Link to="/today">
+            <button className={styles.navButton} id={appStyles.red}>
+              Today
+            </button>
+          </Link>
+        </div>
+        <div id={appStyles.desktopVisible}>
+          <Link to="/create" id={appStyles.desktopVisible}>
+            <button className={styles.navButton} id={appStyles.yellow}>
+              Create
+            </button>
+          </Link>
+        </div>
         <Searchbar />
         <div
           className={styles.navButtonContainer}
           id={appStyles.desktopVisible}
         >
-          <button
-            className={`${styles.navButton} ${styles.rightSideButton}`}
-            id={appStyles.lightBlue}
-          >
-            <img
-              className={styles.navLogos}
-              src="https://icongr.am/octicons/person.svg?size=148"
-              alt="user"
-            />
-          </button>
-          <button
-            className={`${styles.navButton} ${styles.rightSideButton}`}
-            id={appStyles.blue}
-          >
-            <img
-              className={styles.navLogos}
-              src="https://icongr.am/octicons/bookmark.svg?size=14"
-              alt="bookmark"
-            />
-          </button>
+          <Link to="/random">
+            <button
+              className={`${styles.navButton} ${styles.rightSideButton}`}
+              id={appStyles.lightBlue}
+            >
+              Random
+            </button>
+          </Link>
+          {isAuthenticated ? (
+            <Link to="/profile">
+              <div
+                className={`${styles.profileContainer} ${styles.rightSideButton}`}
+                id={appStyles.blue}
+              >
+                <img
+                  className={styles.profile}
+                  src={user && user.picture}
+                  alt="user"
+                />
+              </div>
+            </Link>
+          ) : (
+            <button
+              className={`${styles.navButton} ${styles.rightSideButton}`}
+              id={appStyles.blue}
+              onClick={() => loginWithRedirect()}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 512 512"
+                className={styles.navLogos}
+              >
+                <path d="M256 288A144 144 0 1 0 256 0a144 144 0 1 0 0 288zm-94.7 32C72.2 320 0 392.2 0 481.3c0 17 13.8 30.7 30.7 30.7H481.3c17 0 30.7-13.8 30.7-30.7C512 392.2 439.8 320 350.7 320H161.3z" />
+              </svg>
+            </button>
+          )}
         </div>
         <div className={styles.menu} id={appStyles.mobileVisible}>
-          <MenuIcon />
+          <Burger />
         </div>
       </nav>
     </header>
