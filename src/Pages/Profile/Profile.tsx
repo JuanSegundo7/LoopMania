@@ -7,11 +7,11 @@ import GifMap from "../../components/Gifs/GifMap";
 function Profile() {
   const { logout, user } = useAuth0();
   const [bookmarks, setBookmars] = useState(
-    JSON.parse(localStorage.getItem("favorites") || "")
+    JSON.parse(localStorage.getItem("favorites") || "[]")
   );
 
   useEffect(() => {
-    setBookmars(JSON.parse(localStorage.getItem("favorites") || ""));
+    setBookmars(JSON.parse(localStorage.getItem("favorites") || "[]"));
   }, []);
 
   const handleLogout = () => {
