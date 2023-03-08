@@ -7,11 +7,15 @@ import {
   CLEAN_RANDOM,
 } from "./gifs_actions";
 
+import { ADD_FAVORITE, MATCH_FAVORITE } from "./favorites_actions";
+import { Id } from "../Models/gif.models";
+
 const initialState = {
   Gifs: [],
   Gif: {},
   Random: {},
   Trendings: [],
+  Favorites: [] as string[],
 };
 
 const gifReducer = (state = initialState, action: any) => {
@@ -50,6 +54,23 @@ const gifReducer = (state = initialState, action: any) => {
       return {
         ...state,
         Random: {},
+      };
+    }
+    case ADD_FAVORITE: {
+      let totalFavorites = [...state.Favorites];
+
+      if (state.Favorites.includes(action.payload)) {
+        totalFavorites = totalFavorites.filter(
+          (unFavorito) => unFavorito !== action.payload
+        );
+      } else {
+        totalFavorites.push(action.payload);
+      }
+      if (state.Favorites.length === 1) localStorage.removeItem("favorites");
+
+      return {
+        ...state,
+        Favorites: totalFavorites,
       };
     }
 

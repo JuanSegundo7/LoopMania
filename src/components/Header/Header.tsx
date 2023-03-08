@@ -10,9 +10,6 @@ function Header() {
   const [value, setValue] = useState(false);
   const { user, isAuthenticated, loginWithRedirect, isLoading } = useAuth0();
 
-  const handleClick = () => {
-    setValue(!value);
-  };
   return (
     <header className={styles.header}>
       <nav className={styles.nav}>

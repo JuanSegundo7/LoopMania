@@ -2,6 +2,10 @@ export interface Keyword {
     keyword: string;
 }
 
+export interface Id {
+    id: string;
+}
+
 export interface data {
     data: Gif;
 }

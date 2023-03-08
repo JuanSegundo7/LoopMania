@@ -3,6 +3,8 @@ import{composeWithDevTools} from 'redux-devtools-extension'
 import thunk from 'redux-thunk'
 
 import gifReducer from './reducer';
+import favoriteReducer from "./favoriteReducer";
+
 
 const store = createStore(
     gifReducer,

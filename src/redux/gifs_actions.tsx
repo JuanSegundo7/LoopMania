@@ -61,7 +61,6 @@ export const getTrendings = () => async (dispatch: Function) => {
 
 export const clean = (component: string) => (dispatch: Function) => {
   if (component === "random") {
-    console.log("llegue");
     return dispatch({ type: CLEAN_RANDOM });
   }
 

@@ -1,0 +1,26 @@
+#Profile{
+    margin: 3em 0 0 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profileH3{
+    font-size: 36px;
+    margin: 0.5em 0 0 0;
+}
+
+.profileP{
+    margin: 1em 0;
+}
+
+.profileButton{
+    padding: 0.5em 2em;
+    border: none;
+    color: white;
+    border-radius: 15px;
+    cursor: pointer;
+    background-color: var(--red)
+}
