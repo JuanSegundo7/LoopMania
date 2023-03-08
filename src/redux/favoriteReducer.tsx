@@ -10,13 +10,16 @@ const favoriteReducer = (state = initialState, action: any) => {
     case ADD_FAVORITE: {
       let totalFavorites = [...state.Favorites];
 
-      if (state.Favorites.includes(action.payload)) {
-        totalFavorites = totalFavorites.filter(
-          (unFavorito) => unFavorito !== action.payload
-        );
-      } else {
-        totalFavorites.push(action.payload);
+      for (let i = 0; i < state.Favorites.length; i++) {
+        if (state.Favorites[i].includes(action.payload.id)) {
+          totalFavorites = totalFavorites.filter(
+            (unFavorito) => unFavorito !== action.payload
+          );
+        } else {
+          totalFavorites.push(action.payload);
+        }
       }
+
       if (state.Favorites.length === 1) localStorage.removeItem("favorites");
 
       return {

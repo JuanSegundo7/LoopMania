@@ -7,7 +7,6 @@ import { addFavorite, matchFavorite } from "../../redux/favorites_actions";
 function Bookmarks(Object: data) {
   const dispatch = useDispatch();
   const allFavorites = useSelector((state: any) => state.Favorites);
-  console.log(allFavorites);
 
   const handleFavorite = () => {
     dispatch(addFavorite(Object));
