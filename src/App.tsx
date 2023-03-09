@@ -6,8 +6,12 @@ import { BrowserRouter } from "react-router-dom";
 import Switch from "./components/Switch/Switch";
 import { Container } from "@mui/material";
 import { Auth0Provider } from "@auth0/auth0-react";
+import { useSelector } from "react-redux";
 
 function App() {
+  const allFavorites = useSelector((state: any) => state.Favorites);
+
+  console.log(allFavorites, "bookmarks");
   return (
     <Auth0Provider
       domain={process.env.REACT_APP_DOMAIN as string}

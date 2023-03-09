@@ -24,9 +24,12 @@ function Header() {
           </Link>
         </div>
         <div id={appStyles.desktopVisible}>
-          <Link to="/create" id={appStyles.desktopVisible}>
-            <button className={styles.navButton} id={appStyles.yellow}>
-              Create
+          <Link to="/random">
+            <button
+              className={`${styles.navButton} ${styles.rightSideButton}`}
+              id={appStyles.yellow}
+            >
+              Random
             </button>
           </Link>
         </div>
@@ -35,14 +38,6 @@ function Header() {
           className={styles.navButtonContainer}
           id={appStyles.desktopVisible}
         >
-          <Link to="/random">
-            <button
-              className={`${styles.navButton} ${styles.rightSideButton}`}
-              id={appStyles.lightBlue}
-            >
-              Random
-            </button>
-          </Link>
           {isAuthenticated ? (
             <Link to="/profile">
               <div

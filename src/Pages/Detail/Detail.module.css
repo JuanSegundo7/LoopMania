@@ -9,13 +9,13 @@
 
 .detailImage{
     border-radius: 16px;
-    width: 80vw;
+    width: -webkit-fill-available;
     height: auto;
 }
 
 .detailRow{
     display: flex;
-    flex-direction:column-reverse;
+    flex-direction: column-reverse;
     justify-content: center;
     align-items: center;
     width: 100%;
@@ -62,17 +62,40 @@
 
 .socialSide{
     width: 100%;
-    margin: 10px 0;
     height: auto;
     display: flex;
     justify-content: space-evenly;
     flex-direction: row;
+    margin: 20px 0 0 0;
 }
 
 .socialSide svg{
     cursor: pointer;
     width: 34px;
     height: 34px;
+    transition: all 0.2s;
+
+}
+
+.bookmarkOn {
+    cursor: pointer;
+    width: 34px;
+    height: 34px;
+    transition: all 0.2s;
+    fill: var(--yellow);
+}
+
+
+.bookmarkOn:hover {
+    transition: all 0.2s;
+    fill: var(--yellow);
+}
+
+
+
+.socialSide svg:hover{
+    animation: shake 0.95s cubic-bezier(.36,.07,.19,.17) both;
+    transform: translate3d(0, 0, 0);
 }
 
 .detailUserImageContainer p{
@@ -95,16 +118,25 @@
   }
 }
 
-@media (min-width: 470px) {
-    .socialSide{
-        margin: 10px 0 0 0;
-    }
-}
-
 @media (min-width: 768px) {
     .detailRow{
         flex-direction: row;
         align-items: unset;
+        justify-content: unset;
+    }
+
+    .detailRowNoUser{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: unset;
+        width: 100%;
+        height: 100%;
+
+    }
+
+    .detailRowNoUser img{
+        width: 64vw;
     }
 
     .detailUserImageContainer{
@@ -113,7 +145,7 @@
     }
 
     .detailImage{
-        width: 50vw;
+        width: 60vw;
     }
 
     .gifContainer{

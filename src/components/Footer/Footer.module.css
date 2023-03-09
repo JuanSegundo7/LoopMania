@@ -6,3 +6,7 @@ footer{
     align-items: center;
     justify-content: center;
 }
+
+footer img{
+    margin-right: 0 !important;
+}

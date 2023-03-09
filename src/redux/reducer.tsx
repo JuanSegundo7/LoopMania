@@ -8,14 +8,14 @@ import {
 } from "./gifs_actions";
 
 import { ADD_FAVORITE, MATCH_FAVORITE } from "./favorites_actions";
-import { Id } from "../Models/gif.models";
+import { Gif, Id } from "../Models/gif.models";
 
 const initialState = {
   Gifs: [],
   Gif: {},
   Random: {},
   Trendings: [],
-  Favorites: [] as string[],
+  Favorites: JSON.parse(localStorage.getItem("favorites") || "[]"),
 };
 
 const gifReducer = (state = initialState, action: any) => {
@@ -59,9 +59,12 @@ const gifReducer = (state = initialState, action: any) => {
     case ADD_FAVORITE: {
       let totalFavorites = [...state.Favorites];
 
-      if (state.Favorites.includes(action.payload)) {
+      console.log(action.payload);
+
+      if (state.Favorites.some((item: Gif) => item.id === action.payload.id)) {
+        console.log("entre");
         totalFavorites = totalFavorites.filter(
-          (unFavorito) => unFavorito !== action.payload
+          (unFavorito) => unFavorito.id !== action.payload.id
         );
       } else {
         totalFavorites.push(action.payload);
