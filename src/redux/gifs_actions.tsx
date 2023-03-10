@@ -40,7 +40,7 @@ export const getRandomGif = () => async (dispatch: Function) => {
       `https://api.giphy.com/v1/gifs/random?api_key=${process.env.REACT_APP_API_KEY}`
     );
 
-    dispatch({ type: GET_RANDOM_GIF, payload: data.data });
+    dispatch({ type: GET_RANDOM_GIF, payload: data });
   } catch (e) {
     console.log(e);
   }

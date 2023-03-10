@@ -57,6 +57,7 @@ nav{
     align-items: center;
     justify-content: center;
     transition: 0.5s;
+    margin-left: 1.5em;
 
 }
 
@@ -72,15 +73,13 @@ nav{
 
 .navButtonContainer{
     display: flex;
-    justify-content: center;
-    width: 170px;
+    width: 120px;
 }
 
 
 .navLogos{
     width: 25px;
     height: 25px;
-    font-smooth: always;
     transition: 0.5s;
 }
 

@@ -21,8 +21,10 @@ function Detail() {
 
   const gifDetail: data = useSelector((state: any) => state.Gif);
 
+  console.log(gifDetail, "detail");
+
   return (
-    <article className={styles.Detail}>
+    <section className={styles.Detail}>
       {!Object.keys(gifDetail).length ? (
         <Spinner />
       ) : (
@@ -109,7 +111,7 @@ function Detail() {
           </div>
         </article>
       )}
-    </article>
+    </section>
   );
 }
 

@@ -15,7 +15,11 @@ function Searchbar() {
   };
 
   const handleSubmit = (e: any) => {
-    if (pathname.includes("/gif") || pathname.includes("/profile")) {
+    if (
+      pathname.includes("/gif") ||
+      pathname.includes("/profile") ||
+      pathname.includes("/random")
+    ) {
       navigate(`/gifs/${name}`);
     }
     e.preventDefault();

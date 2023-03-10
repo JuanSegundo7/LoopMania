@@ -5,9 +5,11 @@ import appStyles from "../../App.module.css";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useState } from "react";
 import Burger from "./Burger";
+import { useLocation, useNavigate } from "react-router-dom";
 
 function Header() {
-  const [value, setValue] = useState(false);
+  const { pathname } = useLocation();
+  const navigate = useNavigate();
   const { user, isAuthenticated, loginWithRedirect, isLoading } = useAuth0();
 
   return (
@@ -23,7 +25,14 @@ function Header() {
             </button>
           </Link>
         </div>
-        <div id={appStyles.desktopVisible}>
+        <div
+          id={appStyles.desktopVisible}
+          onClick={
+            pathname.includes("/random")
+              ? () => window.location.reload()
+              : () => ""
+          }
+        >
           <Link to="/random">
             <button
               className={`${styles.navButton} ${styles.rightSideButton}`}
