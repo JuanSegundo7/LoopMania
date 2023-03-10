@@ -11,6 +11,7 @@ function Profile() {
     left: 0,
     behavior: "smooth",
   });
+
   const bookmarksState = useSelector((state: any) => state.Favorites);
 
   const { logout, user } = useAuth0();
