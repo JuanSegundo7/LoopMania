@@ -27,6 +27,7 @@ function Bookmarks(Object: data) {
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 384 512"
+          id={detailStyles.socialSideSvg}
           className={detailStyles.bookmarkOn}
           onClick={() => handleFavorite()}
         >
@@ -36,6 +37,7 @@ function Bookmarks(Object: data) {
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 384 512"
+          id={detailStyles.socialSideSvg}
           onClick={() => handleFavorite()}
           className=""
         >

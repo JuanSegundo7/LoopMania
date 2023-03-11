@@ -52,6 +52,7 @@
   "devDependencies": {
     "@auth0/auth0-react": "^2.0.1",
     "@types/react-router-dom": "^5.3.3",
-    "@uiball/loaders": "^1.2.6"
+    "@uiball/loaders": "^1.2.6",
+    "react-share": "^4.4.1"
   }
 }
