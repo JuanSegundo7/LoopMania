@@ -17,6 +17,7 @@ export const getGifs = (keyword: string) => async (dispatch: Function) => {
     const { data } = await axios.get(
       `https://api.giphy.com/v1/gifs/search?api_key=${process.env.REACT_APP_API_KEY}&q=${keyword}&offset=0&rating=g&lang=en`
     );
+
     dispatch({ type: GET_GIFS, payload: data });
   } catch (e) {
     console.log(e);

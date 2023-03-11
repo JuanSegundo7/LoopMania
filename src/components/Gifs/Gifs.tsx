@@ -21,6 +21,8 @@ function Gifs({ keyword }: any) {
     };
   }, [dispatch, keyword]);
 
+  console.log(data);
+
   return (
     <>
       {!data ? (

@@ -111,8 +111,6 @@
     fill: var(--yellow);
 }
 
-
-
 .socialSide svg:hover{
     animation: shake 0.95s cubic-bezier(.36,.07,.19,.17) both;
     transform: translate3d(0, 0, 0);
@@ -153,7 +151,7 @@
     }
     
     .detailUserImageContainer{
-        margin: 70px 0 0 2em;
+        margin: 88px 0 0 2em;
         width: 8em;
     }
     
