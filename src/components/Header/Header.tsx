@@ -4,7 +4,7 @@ import styles from "./Header.module.css";
 import appStyles from "../../App.module.css";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useState } from "react";
-import Burger from "./Burger";
+import Burger from "../Burger/Burger";
 import { useLocation, useNavigate } from "react-router-dom";
 
 function Header() {

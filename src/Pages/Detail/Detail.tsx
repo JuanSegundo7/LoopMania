@@ -110,6 +110,7 @@ function Detail() {
               src={gifDetail.data.images.downsized_medium.url}
               alt={gifDetail.data.title}
               onLoad={handleImageLoad}
+              style={{ display: isLoading ? "none" : "block" }}
             />
             <div className={styles.socialSide}>
               <div className={styles.socialIconContainer}>

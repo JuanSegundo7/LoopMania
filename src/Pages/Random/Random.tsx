@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import detailStyles from "../Detail/Detail.module.css";
 import { useSelector, useDispatch } from "react-redux";
 import { clean, getRandomGif } from "../../redux/gifs_actions";
@@ -14,6 +14,12 @@ function Random() {
     left: 0,
     behavior: "smooth",
   });
+
+  const [isLoading, setIsLoading] = useState(true);
+
+  const handleImageLoad = () => {
+    setIsLoading(false);
+  };
 
   const random: data = useSelector((state: any) => state.Random);
 
@@ -101,10 +107,13 @@ function Random() {
           )}
           <div className={detailStyles.gifContainer}>
             <h2>{random.data.title.toUpperCase()}</h2>
+            {isLoading && <Spinner />}
             <img
               className={detailStyles.detailImage}
               src={random.data.images.downsized_medium.url}
               alt={random.data.title}
+              onLoad={handleImageLoad}
+              style={{ display: isLoading ? "none" : "block" }}
             />
             <div className={detailStyles.socialSide}>
               <div className={detailStyles.socialIconContainer}>
