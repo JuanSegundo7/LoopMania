@@ -16,10 +16,13 @@ import AccountCircleRoundedIcon from "@mui/icons-material/AccountCircleRounded";
 import AttractionsRoundedIcon from "@mui/icons-material/AttractionsRounded";
 import CalendarTodayRoundedIcon from "@mui/icons-material/CalendarTodayRounded";
 import { Link } from "react-router-dom";
+import { useAuth0 } from "@auth0/auth0-react";
 
 type Anchor = "right";
 
 export default function TemporaryDrawer() {
+  const { user, isAuthenticated, loginWithRedirect } = useAuth0();
+
   const [state, setState] = React.useState({
     right: false,
   });
@@ -52,16 +55,34 @@ export default function TemporaryDrawer() {
         </div>
       </Link>
       <List>
-        <ListItem key="profile" disablePadding>
-          <Link to="/profile">
-            <ListItemButton>
-              <ListItemIcon>
-                <AccountCircleRoundedIcon />
-              </ListItemIcon>
-              <ListItemText primary="Profile" />
-            </ListItemButton>
-          </Link>
-        </ListItem>
+        {isAuthenticated ? (
+          <ListItem key="profile" disablePadding>
+            <Link to="/profile">
+              <ListItemButton>
+                <ListItemIcon>
+                  <img
+                    src={user && user.picture}
+                    className={styles.user}
+                    alt="user"
+                  />
+                </ListItemIcon>
+                <ListItemText primary="Profile" />
+              </ListItemButton>
+            </Link>
+          </ListItem>
+        ) : (
+          <button onClick={() => loginWithRedirect()} id={styles.buttonLogin}>
+            <ListItem key="profile" disablePadding>
+              <ListItemButton>
+                <ListItemIcon>
+                  <AccountCircleRoundedIcon />
+                </ListItemIcon>
+                <ListItemText primary="Login / Register" />
+              </ListItemButton>
+            </ListItem>
+          </button>
+        )}
+
         <ListItem key="Random" disablePadding>
           <Link to="/random">
             <ListItemButton>

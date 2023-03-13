@@ -11,3 +11,13 @@
 #logoBurger img{
     margin: 0;
 }
+
+#buttonLogin{
+    background-color: transparent;
+    border: none;
+    padding: 0;
+}
+
+.user{
+    border-radius: 100%;
+}
