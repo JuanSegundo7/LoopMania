@@ -2,7 +2,20 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import MenuIcon from "@mui/icons-material/Menu";
-import styles from "../Header/Header.module.css";
+import headerStyles from "../Header/Header.module.css";
+import styles from "./Burger.module.css";
+import {
+  Divider,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+} from "@mui/material";
+import AccountCircleRoundedIcon from "@mui/icons-material/AccountCircleRounded";
+import AttractionsRoundedIcon from "@mui/icons-material/AttractionsRounded";
+import CalendarTodayRoundedIcon from "@mui/icons-material/CalendarTodayRounded";
+import { Link } from "react-router-dom";
 
 type Anchor = "right";
 
@@ -32,8 +45,45 @@ export default function TemporaryDrawer() {
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
     >
-      <img className={styles.logo} src="/favicon.ico" alt="logo" />
-      <p>Loop mania</p>
+      <Link to="/">
+        <div id={styles.logoBurger}>
+          <img className={headerStyles.logo} src="/favicon.ico" alt="logo" />
+          <p>Loop mania</p>
+        </div>
+      </Link>
+      <List>
+        <ListItem key="profile" disablePadding>
+          <Link to="/profile">
+            <ListItemButton>
+              <ListItemIcon>
+                <AccountCircleRoundedIcon />
+              </ListItemIcon>
+              <ListItemText primary="Profile" />
+            </ListItemButton>
+          </Link>
+        </ListItem>
+        <ListItem key="Random" disablePadding>
+          <Link to="/random">
+            <ListItemButton>
+              <ListItemIcon>
+                <AttractionsRoundedIcon />
+              </ListItemIcon>
+              <ListItemText primary="Random" />
+            </ListItemButton>
+          </Link>
+        </ListItem>
+        <ListItem key="Today" disablePadding>
+          <Link to="/today">
+            <ListItemButton>
+              <ListItemIcon>
+                <CalendarTodayRoundedIcon />
+              </ListItemIcon>
+              <ListItemText primary="Today" />
+            </ListItemButton>
+          </Link>
+        </ListItem>
+      </List>
+      <Divider />
     </Box>
   );
 
