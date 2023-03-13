@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getOneGif, clean } from "../../redux/gifs_actions";
@@ -9,8 +9,14 @@ import Bookmarks from "../../components/Bookmark/Bookmark";
 import Share from "../../components/Share/Share";
 
 function Detail() {
+  const [isLoading, setIsLoading] = useState(true);
+
   const dispatch = useDispatch();
   const { id } = useParams();
+
+  const handleImageLoad = () => {
+    setIsLoading(false);
+  };
 
   useEffect(() => {
     if (id) dispatch(getOneGif(id));
@@ -102,7 +108,9 @@ function Detail() {
               className={styles.detailImage}
               src={gifDetail.data.images.downsized_medium.url}
               alt={gifDetail.data.title}
+              onLoad={handleImageLoad}
             />
+            {isLoading && <Spinner />}
             <div className={styles.socialSide}>
               <div className={styles.socialIconContainer}>
                 <Bookmarks data={gifDetail.data} />

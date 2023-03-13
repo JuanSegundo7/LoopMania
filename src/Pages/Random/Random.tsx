@@ -1,9 +1,9 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import detailStyles from "../Detail/Detail.module.css";
 import { useSelector, useDispatch } from "react-redux";
 import { clean, getRandomGif } from "../../redux/gifs_actions";
 import Spinner from "../../components/Spinner/Spinner";
-import { data, Gif } from "../../Models/gif.models";
+import { data } from "../../Models/gif.models";
 import Bookmarks from "../../components/Bookmark/Bookmark";
 import Share from "../../components/Share/Share";
 
@@ -24,8 +24,6 @@ function Random() {
       dispatch(clean("random"));
     };
   }, [dispatch]);
-
-  console.log(random, "random");
 
   return (
     <section className={detailStyles.Detail}>
