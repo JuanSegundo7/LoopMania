@@ -104,13 +104,13 @@ function Detail() {
           )}
           <div className={styles.gifContainer}>
             <h2>{gifDetail.data.title.toUpperCase()}</h2>
+            {isLoading && <Spinner />}
             <img
               className={styles.detailImage}
               src={gifDetail.data.images.downsized_medium.url}
               alt={gifDetail.data.title}
               onLoad={handleImageLoad}
             />
-            {isLoading && <Spinner />}
             <div className={styles.socialSide}>
               <div className={styles.socialIconContainer}>
                 <Bookmarks data={gifDetail.data} />
