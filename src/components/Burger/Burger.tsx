@@ -56,8 +56,8 @@ export default function TemporaryDrawer() {
       </Link>
       <List>
         {isAuthenticated ? (
-          <ListItem key="profile" disablePadding>
-            <Link to="/profile">
+          <Link to="/profile">
+            <ListItem key="profile" disablePadding>
               <ListItemButton>
                 <ListItemIcon>
                   <img
@@ -68,8 +68,8 @@ export default function TemporaryDrawer() {
                 </ListItemIcon>
                 <ListItemText primary="Profile" />
               </ListItemButton>
-            </Link>
-          </ListItem>
+            </ListItem>
+          </Link>
         ) : (
           <button onClick={() => loginWithRedirect()} id={styles.buttonLogin}>
             <ListItem key="profile" disablePadding>
@@ -83,26 +83,26 @@ export default function TemporaryDrawer() {
           </button>
         )}
 
-        <ListItem key="Random" disablePadding>
-          <Link to="/random">
+        <Link to="/random">
+          <ListItem key="Random" disablePadding>
             <ListItemButton>
               <ListItemIcon>
                 <AttractionsRoundedIcon />
               </ListItemIcon>
               <ListItemText primary="Random" />
             </ListItemButton>
-          </Link>
-        </ListItem>
-        <ListItem key="Today" disablePadding>
-          <Link to="/today">
+          </ListItem>
+        </Link>
+        <Link to="/today">
+          <ListItem key="Today" disablePadding>
             <ListItemButton>
               <ListItemIcon>
                 <CalendarTodayRoundedIcon />
               </ListItemIcon>
               <ListItemText primary="Today" />
             </ListItemButton>
-          </Link>
-        </ListItem>
+          </ListItem>
+        </Link>
       </List>
       <Divider />
     </Box>
