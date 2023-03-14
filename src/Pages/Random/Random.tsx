@@ -6,6 +6,8 @@ import Spinner from "../../components/Spinner/Spinner";
 import { data } from "../../Models/gif.models";
 import Bookmarks from "../../components/Bookmark/Bookmark";
 import Share from "../../components/Share/Share";
+import BookmarkNotVisible from "../../components/Bookmark/BookmarkNotVisible";
+import { useAuth0 } from "@auth0/auth0-react";
 
 function Random() {
   const dispatch = useDispatch();
@@ -14,6 +16,8 @@ function Random() {
     left: 0,
     behavior: "smooth",
   });
+
+  const { isAuthenticated } = useAuth0();
 
   const [isLoading, setIsLoading] = useState(true);
 
@@ -34,7 +38,7 @@ function Random() {
   return (
     <section className={detailStyles.Detail}>
       {!Object.keys(random).length ? (
-        <Spinner />
+        <Spinner detail="" />
       ) : (
         <article
           className={
@@ -107,7 +111,7 @@ function Random() {
           )}
           <div className={detailStyles.gifContainer}>
             <h2>{random.data.title.toUpperCase()}</h2>
-            {isLoading && <Spinner />}
+            {isLoading && <Spinner detail="detail" />}
             <img
               className={detailStyles.detailImage}
               src={random.data.images.downsized_medium.url}
@@ -116,9 +120,18 @@ function Random() {
               style={{ display: isLoading ? "none" : "block" }}
             />
             <div className={detailStyles.socialSide}>
-              <div className={detailStyles.socialIconContainer}>
-                <Bookmarks data={random.data} />
-              </div>
+              {isAuthenticated ? (
+                <div className={detailStyles.socialIconContainer}>
+                  <Bookmarks data={random.data} />
+                </div>
+              ) : (
+                <div
+                  className={detailStyles.socialIconContainer}
+                  id={detailStyles.notVisible}
+                >
+                  <BookmarkNotVisible />
+                </div>
+              )}
               <Share />
             </div>
           </div>

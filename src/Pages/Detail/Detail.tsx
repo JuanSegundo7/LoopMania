@@ -7,8 +7,18 @@ import Spinner from "../../components/Spinner/Spinner";
 import { data } from "../../Models/gif.models";
 import Bookmarks from "../../components/Bookmark/Bookmark";
 import Share from "../../components/Share/Share";
+import { useAuth0 } from "@auth0/auth0-react";
+import BookmarkNotVisible from "../../components/Bookmark/BookmarkNotVisible";
 
 function Detail() {
+  window.scrollTo({
+    top: 0,
+    left: 0,
+    behavior: "smooth",
+  });
+
+  const { isAuthenticated } = useAuth0();
+
   const [isLoading, setIsLoading] = useState(true);
 
   const dispatch = useDispatch();
@@ -33,7 +43,7 @@ function Detail() {
   return (
     <section className={styles.Detail}>
       {!Object.keys(gifDetail).length ? (
-        <Spinner />
+        <Spinner detail="" />
       ) : (
         <article
           className={
@@ -104,7 +114,7 @@ function Detail() {
           )}
           <div className={styles.gifContainer}>
             <h2>{gifDetail.data.title.toUpperCase()}</h2>
-            {isLoading && <Spinner />}
+            {isLoading && <Spinner detail="detail" />}
             <img
               className={styles.detailImage}
               src={gifDetail.data.images.downsized_medium.url}
@@ -113,9 +123,18 @@ function Detail() {
               style={{ display: isLoading ? "none" : "block" }}
             />
             <div className={styles.socialSide}>
-              <div className={styles.socialIconContainer}>
-                <Bookmarks data={gifDetail.data} />
-              </div>
+              {isAuthenticated ? (
+                <div className={styles.socialIconContainer}>
+                  <Bookmarks data={gifDetail.data} />
+                </div>
+              ) : (
+                <div
+                  className={styles.socialIconContainer}
+                  id={styles.notVisible}
+                >
+                  <BookmarkNotVisible />
+                </div>
+              )}
               <Share />
             </div>
           </div>

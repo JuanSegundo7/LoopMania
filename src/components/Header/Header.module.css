@@ -67,7 +67,7 @@ nav{
 }
 
 .navButton:hover > .navLogos{
-    transition: 0.5s;
+    transition: 0.3s;
     filter: invert(1);
 }
 

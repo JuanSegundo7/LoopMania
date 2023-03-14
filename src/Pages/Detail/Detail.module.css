@@ -84,6 +84,14 @@
 
 }
 
+#notVisible svg{
+    opacity: 0.1;
+}
+
+#notVisible:hover{
+    background-color: var(--greyButton);
+}
+
 .socialIconContainer:hover{
     transition: 0.3s;
     background-color: var(--grey);
@@ -118,6 +126,14 @@
 
 .detailUserImageContainer p{
     margin: 0;
+}
+
+.detailSpinner{
+    height: 60vh;
+    width: 60vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 

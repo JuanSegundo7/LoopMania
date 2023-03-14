@@ -30,7 +30,7 @@ function Profile() {
   return (
     <section id={styles.Profile}>
       {!user ? (
-        <Spinner />
+        <Spinner detail="" />
       ) : (
         <article>
           <picture className={styles.container}>

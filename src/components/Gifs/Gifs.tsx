@@ -26,7 +26,7 @@ function Gifs({ keyword }: any) {
   return (
     <>
       {!data ? (
-        <Spinner />
+        <Spinner detail="detail" />
       ) : (
         <>
           <div id={appStyles.mobileVisible}>
